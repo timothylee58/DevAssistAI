@@ -34,48 +34,47 @@
 @plugin "@tailwindcss/typography";
 
 /* ═══════════════════════════════════════════════════════════
-   ILMU — MALAYSIAN AI DESIGN SYSTEM
-   Inspired by Jalur Gemilang: deep navy blue, gold, red
-   "Speak Malaysian, Think Lokal"
+   DEVASSIST — DEVELOPER-FOCUSED DESIGN SYSTEM
+   Inspired by GitHub Dark: deep black, blue accent
+   "AI Pair Programmer for developers"
    ═══════════════════════════════════════════════════════════ */
 
-/* define design tokens (light mode — Malaysian Dawn) */
+/* define design tokens (light mode) */
 :root {
-  --background: hsl(220 25% 97%);
-  --foreground: hsl(220 30% 8%);
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(215 14% 11%);
   --card: hsl(0 0% 100%);
-  --card-foreground: hsl(220 30% 8%);
+  --card-foreground: hsl(215 14% 11%);
   --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(220 30% 8%);
-  --primary: hsl(217 71% 45%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(220 20% 95%);
-  --secondary-foreground: hsl(220 30% 8%);
-  --muted: hsl(220 16% 93%);
-  --muted-foreground: hsl(220 10% 46%);
-  --accent: hsl(45 93% 47%);
-  --accent-foreground: hsl(220 30% 8%);
+  --popover-foreground: hsl(215 14% 11%);
+  --primary: hsl(213 100% 68%);
+  --primary-foreground: hsl(215 28% 7%);
+  --secondary: hsl(210 16% 93%);
+  --secondary-foreground: hsl(215 14% 11%);
+  --muted: hsl(210 14% 92%);
+  --muted-foreground: hsl(215 10% 46%);
+  --accent: hsl(213 100% 68%);
+  --accent-foreground: hsl(215 28% 7%);
   --destructive: hsl(0 72% 51%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(220 18% 88%);
-  --input: hsl(220 18% 88%);
-  --ring: hsl(217 71% 45%);
-  --chart-1: hsl(217 71% 45%);
-  --chart-2: hsl(45 93% 47%);
+  --border: hsl(210 16% 87%);
+  --input: hsl(210 16% 87%);
+  --ring: hsl(213 100% 68%);
+  --chart-1: hsl(213 100% 68%);
+  --chart-2: hsl(142 71% 45%);
   --chart-3: hsl(0 72% 51%);
-  --chart-4: hsl(160 84% 39%);
+  --chart-4: hsl(45 93% 47%);
   --chart-5: hsl(280 60% 50%);
-  --sidebar-background: hsl(220 25% 96%);
-  --sidebar-foreground: hsl(220 15% 28%);
-  --sidebar-primary: hsl(217 71% 45%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(217 50% 95%);
-  --sidebar-accent-foreground: hsl(217 71% 35%);
-  --sidebar-border: hsl(220 18% 90%);
-  --sidebar-ring: hsl(217 71% 45%);
-  /* border radius unit */
+  --sidebar-background: hsl(210 14% 96%);
+  --sidebar-foreground: hsl(215 10% 30%);
+  --sidebar-primary: hsl(213 100% 68%);
+  --sidebar-primary-foreground: hsl(215 28% 7%);
+  --sidebar-accent: hsl(213 80% 94%);
+  --sidebar-accent-foreground: hsl(213 80% 35%);
+  --sidebar-border: hsl(210 16% 89%);
+  --sidebar-ring: hsl(213 100% 68%);
   --radius: 0.625rem;
-  --sidebar: hsl(220 25% 96%);
+  --sidebar: hsl(210 14% 96%);
 
   /* Malaysian brand tokens (Jalur Gemilang) */
   --my-blue: hsl(217 71% 45%);
@@ -116,55 +115,41 @@
   --bottom-nav-height: 64px;
 }
 
-/* define design tokens (dark mode — Malaysian Night) */
+/* define design tokens (dark mode — GitHub Dark) */
 .dark {
-  --background: hsl(222 30% 5%);
-  --foreground: hsl(220 25% 95%);
-  --card: hsl(222 26% 8%);
-  --card-foreground: hsl(220 25% 95%);
-  --popover: hsl(222 26% 8%);
-  --popover-foreground: hsl(220 25% 95%);
-  --primary: hsl(217 75% 55%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(222 22% 13%);
-  --secondary-foreground: hsl(220 25% 95%);
-  --muted: hsl(222 20% 14%);
-  --muted-foreground: hsl(220 12% 55%);
-  --accent: hsl(45 90% 52%);
-  --accent-foreground: hsl(222 30% 5%);
+  --background: #0d1117;
+  --foreground: hsl(215 20% 85%);
+  --card: hsl(215 28% 9%);
+  --card-foreground: hsl(215 20% 85%);
+  --popover: hsl(215 28% 9%);
+  --popover-foreground: hsl(215 20% 85%);
+  --primary: #58a6ff;
+  --primary-foreground: hsl(215 28% 7%);
+  --secondary: hsl(215 22% 14%);
+  --secondary-foreground: hsl(215 20% 85%);
+  --muted: hsl(215 20% 15%);
+  --muted-foreground: hsl(215 12% 55%);
+  --accent: #58a6ff;
+  --accent-foreground: hsl(215 28% 7%);
   --destructive: hsl(0 63% 45%);
   --destructive-foreground: hsl(0 0% 100%);
-  --border: hsl(222 18% 16%);
-  --input: hsl(222 18% 16%);
-  --ring: hsl(217 75% 55%);
-  --chart-1: hsl(217 80% 60%);
-  --chart-2: hsl(45 90% 55%);
+  --border: hsl(215 18% 18%);
+  --input: hsl(215 18% 18%);
+  --ring: #58a6ff;
+  --chart-1: #58a6ff;
+  --chart-2: hsl(142 71% 45%);
   --chart-3: hsl(0 72% 58%);
-  --chart-4: hsl(160 72% 50%);
+  --chart-4: hsl(45 90% 55%);
   --chart-5: hsl(280 65% 60%);
-  --sidebar-background: hsl(222 28% 7%);
-  --sidebar-foreground: hsl(220 15% 75%);
-  --sidebar-primary: hsl(217 75% 55%);
-  --sidebar-primary-foreground: hsl(0 0% 100%);
-  --sidebar-accent: hsl(217 40% 15%);
-  --sidebar-accent-foreground: hsl(217 80% 80%);
-  --sidebar-border: hsl(222 18% 14%);
-  --sidebar-ring: hsl(217 75% 55%);
-  --sidebar: hsl(222 28% 7%);
-
-  /* Malaysian dark brand tokens */
-  --my-blue: hsl(217 80% 60%);
-  --my-blue-light: hsl(217 85% 70%);
-  --my-gold: hsl(45 90% 55%);
-  --my-gold-light: hsl(45 85% 65%);
-  --my-red: hsl(0 72% 58%);
-  --my-green: hsl(160 72% 50%);
-  --my-gradient: linear-gradient(135deg, hsl(217 80% 60%), hsl(45 90% 55%));
-  --my-gradient-gold: linear-gradient(135deg, hsl(45 90% 55%), hsl(38 92% 60%));
-  --nexus-gradient: linear-gradient(135deg, hsl(217 80% 60%), hsl(45 90% 55%));
-  --nexus-gradient-warm: linear-gradient(135deg, hsl(217 80% 60%), hsl(0 72% 58%));
-  --nexus-surface-glass: rgba(12, 15, 25, 0.78);
-  --nexus-blur: 20px;
+  --sidebar-background: hsl(215 28% 7%);
+  --sidebar-foreground: hsl(215 15% 70%);
+  --sidebar-primary: #58a6ff;
+  --sidebar-primary-foreground: hsl(215 28% 7%);
+  --sidebar-accent: hsl(215 40% 15%);
+  --sidebar-accent-foreground: #58a6ff;
+  --sidebar-border: hsl(215 18% 16%);
+  --sidebar-ring: #58a6ff;
+  --sidebar: hsl(215 28% 7%);
 }
 
 /* define theme */
