@@ -1,7 +1,6 @@
 # DevAssist — AI Pair Programmer
 > An intelligent developer-focused chatbot with code execution, GitHub context, and technical tooling. Built on Next.js App Router + Vercel AI SDK.
 
-![DevAssist Banner](app/(chat)/opengraph-image.png)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/nextjs-ai-chatbot)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
