@@ -1,20 +1,37 @@
-<a href="https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Chat SDK</h1>
-</a>
+# DevAssist — AI Pair Programmer
+> An intelligent developer-focused chatbot with code execution, GitHub context, and technical tooling. Built on Next.js App Router + Vercel AI SDK.
 
-<p align="center">
-    Chat SDK is a free, open-source template built with Next.js and the AI SDK that helps you quickly build powerful chatbot applications.
-</p>
+![DevAssist Banner](app/(chat)/opengraph-image.png)
 
-<p align="center">
-  <a href="[https://chat-sdk.dev](https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app)"><strong>Read Docs</strong></a> ·
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
-</p>
-<br/>
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/nextjs-ai-chatbot)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38bdf8?logo=tailwindcss)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Environment Variables](#environment-variables)
+- [Tool Integrations](#tool-integrations)
+- [Deployment](#deployment)
+- [Roadmap](#roadmap)
+
+---
+
+## Overview
+
+DevAssist is a developer-focused AI pair programmer that understands code context, executes code in a sandbox, fetches live documentation, and explains errors. It differs from generic chatbots by being purpose-built for software engineering workflows.
+
+**Target users:** Developers who want an AI coding assistant embedded in their workflow without leaving the browser.
+
+---
 
 ## Features
 
