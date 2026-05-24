@@ -8,8 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app"><strong>Live Demo</strong></a> ·
-  <a href="https://chat-sdk.dev"><strong>Read Docs</strong></a> ·
+  <a href="[https://chat-sdk.dev](https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app)"><strong>Read Docs</strong></a> ·
   <a href="#features"><strong>Features</strong></a> ·
   <a href="#model-providers"><strong>Model Providers</strong></a> ·
   <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
@@ -19,7 +18,7 @@
 
 ## Features
 
-- [Next.js](https://nextjs.org) App Router
+- [Next.js]([https://nextjs.org](https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app)) App Router
   - Advanced routing for seamless navigation and performance
   - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
 - [AI SDK](https://ai-sdk.dev/docs/introduction)

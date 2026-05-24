@@ -9,6 +9,7 @@
  */
 
 import { gateway } from "@ai-sdk/gateway";
+import { google } from "@ai-sdk/google";
 import {
   customProvider,
   extractReasoningMiddleware,
@@ -45,16 +46,22 @@ export function getLanguageModel(modelId: string) {
   const isReasoningModel =
     modelId.includes("reasoning") || modelId.endsWith("-thinking");
 
-  if (isReasoningModel) {
-    const gatewayModelId = modelId.replace(THINKING_SUFFIX_REGEX, "");
+  const baseModelId = isReasoningModel
+    ? modelId.replace(THINKING_SUFFIX_REGEX, "")
+    : modelId;
 
+  const provider = baseModelId.startsWith("google/") ? google : gateway;
+
+  const model = provider.languageModel(baseModelId);
+
+  if (isReasoningModel) {
     return wrapLanguageModel({
-      model: gateway.languageModel(gatewayModelId),
+      model,
       middleware: extractReasoningMiddleware({ tagName: "thinking" }),
     });
   }
 
-  return gateway.languageModel(modelId);
+  return model;
 }
 
 export function getTitleModel() {
