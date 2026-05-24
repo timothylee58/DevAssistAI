@@ -18,54 +18,189 @@
 
 ## Features
 
-- [Next.js]([https://nextjs.org](https://nextjs-ai-chatbot-six-rose-hppnwwn81y.vercel.app)) App Router
-  - Advanced routing for seamless navigation and performance
-  - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
-- [AI SDK](https://ai-sdk.dev/docs/introduction)
-  - Unified API for generating text, structured objects, and tool calls with LLMs
-  - Hooks for building dynamic chat and generative user interfaces
-  - Supports xAI (default), OpenAI, Fireworks, and other model providers
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - Component primitives from [Radix UI](https://radix-ui.com) for accessibility and flexibility
-- Data Persistence
-  - [Neon Serverless Postgres](https://vercel.com/marketplace/neon) for saving chat history and user data
-  - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
-- [Auth.js](https://authjs.dev)
-  - Simple and secure authentication
+### Core
 
-## Model Providers
+- **Multi-model support** — xAI Grok, OpenAI GPT-4o, switchable via UI dropdown
+- **Auth.js authentication** — secure login with GitHub OAuth
+- **Persistent chat history** — stored in Neon Serverless Postgres
+- **File storage** — Vercel Blob for attachments and code files
 
-This template uses the [Vercel AI Gateway](https://vercel.com/docs/ai-gateway) to access multiple AI models through a unified interface. The default configuration includes [xAI](https://x.ai) models (`grok-2-vision-1212`, `grok-3-mini`) routed through the gateway.
+### Developer-Specific
 
-### AI Gateway Authentication
+- **🔧 Code execution** — run Python/JS/Bash snippets via sandboxed API (Piston)
+- **📖 Docs lookup** — real-time MDN, Next.js, React documentation fetching
+- **🐛 Error explainer** — paste a stack trace, get root cause + fix
+- **🔗 GitHub integration** — connect a repo, read files, suggest changes
+- **✨ Syntax highlighting** — Shiki-powered code blocks with language detection
+- **🧠 Model comparison** — side-by-side xAI vs OpenAI responses
 
-**For Vercel deployments**: Authentication is handled automatically via OIDC tokens.
+---
 
-**For non-Vercel deployments**: You need to provide an AI Gateway API key by setting the `AI_GATEWAY_API_KEY` environment variable in your `.env.local` file.
+## Architecture
 
-With the [AI SDK](https://ai-sdk.dev/docs/introduction), you can also switch to direct LLM providers like [OpenAI](https://openai.com), [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://ai-sdk.dev/providers/ai-sdk-providers) with just a few lines of code.
+```
+┌──────────────────────────────────────────────────────┐
+│                   Next.js App Router                  │
+│  ┌─────────────┐   ┌──────────────┐   ┌───────────┐  │
+│  │  Chat UI    │   │  Tool Calls  │   │  Auth.js  │  │
+│  │ (shadcn/ui) │   │  (AI SDK)    │   │  (GitHub) │  │
+│  └──────┬──────┘   └──────┬───────┘   └─────┬─────┘  │
+│         └─────────────────┼─────────────────┘        │
+│                     ┌─────▼──────┐                   │
+│                     │  AI Route  │                   │
+│                     │ /api/chat  │                   │
+│                     └─────┬──────┘                   │
+└───────────────────────────┼──────────────────────────┘
+                            │
+        ┌───────────────────┼───────────────────┐
+        ▼                   ▼                   ▼
+  ┌──────────┐      ┌──────────────┐    ┌──────────────┐
+  │ xAI/OAI  │      │ Piston API   │    │  Neon Postgres│
+  │ (models) │      │ (code exec)  │    │  (history)    │
+  └──────────┘      └──────────────┘    └──────────────┘
+```
 
-## Deploy Your Own
+---
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
+## Tech Stack
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/nextjs-ai-chatbot)
+| Layer | Technology | Purpose |
+|---|---|---|
+| Framework | Next.js 15 (App Router) | SSR, routing, server actions |
+| Language | TypeScript 5 | Type safety |
+| AI SDK | Vercel AI SDK 4 | Streaming, tool calls, model switching |
+| UI | shadcn/ui + Tailwind CSS | Component library |
+| Auth | Auth.js v5 | GitHub OAuth |
+| Database | Neon Serverless Postgres | Chat history, user sessions |
+| ORM | Drizzle ORM | Type-safe DB queries |
+| Storage | Vercel Blob | File uploads |
+| Code Exec | Piston API | Sandboxed code execution |
+| Syntax HL | Shiki | Code block rendering |
+| Testing | Playwright | E2E tests |
+| Linting | Biome | Fast linting + formatting |
 
-## Running locally
+---
 
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
+## Getting Started
 
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various AI and authentication provider accounts.
+### Prerequisites
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+- Node.js 20+
+- pnpm 9+
+- A Neon Postgres database
+- GitHub OAuth app credentials
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/timothylee58/nextjs-ai-chatbot.git
+cd nextjs-ai-chatbot
+
+# Install dependencies
 pnpm install
-pnpm db:migrate # Setup database or apply latest database changes
+
+# Copy environment variables
+cp .env.example .env.local
+
+# Run database migrations
+pnpm db:migrate
+
+# Start development server
 pnpm dev
 ```
 
-Your app template should now be running on [localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) to see the app.
+
+---
+
+## Environment Variables
+
+```env
+# AI Gateway
+AI_GATEWAY_API_KEY=your_vercel_ai_gateway_key
+
+# Auth
+AUTH_SECRET=your_auth_secret
+AUTH_GITHUB_ID=your_github_oauth_app_id
+AUTH_GITHUB_SECRET=your_github_oauth_app_secret
+
+# Database
+POSTGRES_URL=your_neon_postgres_url
+
+# Storage
+BLOB_READ_WRITE_TOKEN=your_vercel_blob_token
+```
+
+---
+
+## Tool Integrations
+
+### Code Execution (`run_code`)
+
+Executes code snippets in an isolated sandbox. Supports Python, JavaScript, TypeScript, Bash.
+
+```typescript
+// lib/ai/tools/run-code.ts
+export const runCode = tool({
+  description: 'Execute code in a sandboxed environment',
+  parameters: z.object({
+    language: z.enum(['python', 'javascript', 'typescript', 'bash']),
+    code: z.string(),
+  }),
+  execute: async ({ language, code }) => {
+    // Calls Piston API
+  },
+})
+```
+
+### Documentation Lookup (`search_docs`)
+
+Fetches live documentation from MDN, Next.js, React, and Tailwind.
+
+### Error Explainer (`explain_error`)
+
+Accepts a stack trace and returns a structured analysis with root cause and suggested fix.
+
+---
+
+## Deployment
+
+### Vercel (Recommended)
+
+```bash
+vercel deploy
+```
+
+Set environment variables in the Vercel dashboard under **Project → Settings → Environment Variables**.
+
+### Docker
+
+```bash
+docker build -t devassist .
+docker run -p 3000:3000 --env-file .env.local devassist
+```
+
+---
+
+## Roadmap
+
+- [ ] GitHub repo file explorer in sidebar
+- [ ] Multi-file diff viewer
+- [ ] Saved code snippets library
+- [ ] Shareable chat sessions
+- [ ] VS Code extension
+
+---
+
+## Contributing
+
+Pull requests are welcome. For major changes, open an issue first.
+
+## License
+
+[MIT](LICENSE)
+
+---
+
+*Built by [Timothy Lee](https://github.com/timothylee58)*

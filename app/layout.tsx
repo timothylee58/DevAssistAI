@@ -20,8 +20,8 @@ import "./globals.css";
 /** SEO metadata — appears in browser tabs, search results, and social cards */
 export const metadata: Metadata = {
   metadataBase: new URL("https://chat.vercel.ai"),
-  title: "Nak Tahu AI — Malaysia's AI | Speak Malaysian, Think Lokal",
-  description: "Nak Tahu AI is Malaysia's AI assistant that understands Bahasa Melayu, English, and Manglish. Speak Malaysian, Think Lokal.",
+  title: "DevAssist",
+  description: "AI Pair Programmer for developers",
 };
 
 /** Viewport settings — prevents mobile Safari from auto-zooming on input focus */

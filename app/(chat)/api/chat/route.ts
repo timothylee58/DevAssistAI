@@ -41,8 +41,11 @@ import { entitlementsByUserType } from "@/lib/ai/entitlements";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { getLanguageModel } from "@/lib/ai/providers";
 import { createDocument } from "@/lib/ai/tools/create-document";
+import { explainError } from "@/lib/ai/tools/explain-error";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
+import { runCode } from "@/lib/ai/tools/run-code";
+import { searchDocs } from "@/lib/ai/tools/search-docs";
 import { updateDocument } from "@/lib/ai/tools/update-document";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
@@ -207,6 +210,9 @@ export async function POST(request: Request) {
                 "createDocument",
                 "updateDocument",
                 "requestSuggestions",
+                "runCode",
+                "explainError",
+                "searchDocs",
               ],
           experimental_transform: isReasoningModel
             ? undefined
@@ -226,6 +232,9 @@ export async function POST(request: Request) {
               session,
               dataStream,
             }),
+            runCode,
+            explainError,
+            searchDocs,
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,
