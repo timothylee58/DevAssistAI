@@ -131,7 +131,7 @@ const Tool = ({
   );
 };
 
-const randomArr = [...new Array(6)].map((_x) => nanoid(5));
+const readingLevelPlaceholderIds = [...new Array(6)].map((_unused) => nanoid(5));
 
 const ReadingLevelSelector = ({
   setSelectedTool,
@@ -151,26 +151,26 @@ const ReadingLevelSelector = ({
     "Graduate",
   ];
 
-  const y = useMotionValue(-40 * 2);
+  const dragYOffset = useMotionValue(-40 * 2);
   const dragConstraints = 5 * 40 + 2;
-  const yToLevel = useTransform(y, [0, -dragConstraints], [0, 5]);
+  const dragYToLevelIndex = useTransform(dragYOffset, [0, -dragConstraints], [0, 5]);
 
   const [currentLevel, setCurrentLevel] = useState(2);
   const [hasUserSelectedLevel, setHasUserSelectedLevel] =
     useState<boolean>(false);
 
   useEffect(() => {
-    const unsubscribe = yToLevel.on("change", (latest) => {
+    const unsubscribe = dragYToLevelIndex.on("change", (latest) => {
       const level = Math.min(5, Math.max(0, Math.round(Math.abs(latest))));
       setCurrentLevel(level);
     });
 
     return () => unsubscribe();
-  }, [yToLevel]);
+  }, [dragYToLevelIndex]);
 
   return (
     <div className="relative flex flex-col items-center justify-end">
-      {randomArr.map((id) => (
+      {readingLevelPlaceholderIds.map((id) => (
         <motion.div
           animate={{ opacity: 1 }}
           className="flex size-[40px] flex-row items-center justify-center"
@@ -223,7 +223,7 @@ const ReadingLevelSelector = ({
               onDragStart={() => {
                 setHasUserSelectedLevel(false);
               }}
-              style={{ y }}
+              style={{ y: dragYOffset }}
               transition={{ duration: 0.1 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
