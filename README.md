@@ -134,8 +134,8 @@ Open [http://localhost:3000](http://localhost:3000) to see the app.
 ## Environment Variables
 
 ```env
-# AI Gateway
-AI_GATEWAY_API_KEY=your_vercel_ai_gateway_key
+# Hugging Face Inference API
+HUGGING_FACE_API_KEY=your_hugging_face_api_key
 
 # Auth
 AUTH_SECRET=your_auth_secret

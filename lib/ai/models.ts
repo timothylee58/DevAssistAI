@@ -1,13 +1,13 @@
 /**
  * @file models.ts
  * @description Available AI model definitions for the chat interface. Exports the
- * default chat model ID, the ChatModel type, and a curated list of models from
- * multiple providers (Anthropic, OpenAI, Google, xAI) including reasoning models.
- * Also provides a modelsByProvider grouping for rendering model selection in the UI.
+ * default chat model ID, the ChatModel type, and a curated list of open source
+ * models from Hugging Face. Also provides a modelsByProvider grouping for rendering
+ * model selection in the UI.
  */
 
-// Curated list of top models from Vercel AI Gateway
-export const DEFAULT_CHAT_MODEL = "google/gemini-pro";
+// Curated list of open source models from Hugging Face
+export const DEFAULT_CHAT_MODEL = "mistralai/Mistral-7B-Instruct-v0.1";
 
 export type ChatModel = {
   id: string;
@@ -17,76 +17,50 @@ export type ChatModel = {
 };
 
 export const chatModels: ChatModel[] = [
-  // Anthropic
+  // Meta Llama
   {
-    id: "anthropic/claude-haiku-4.5",
-    name: "Claude Haiku 4.5",
-    provider: "anthropic",
-    description: "Fast and affordable, great for everyday tasks",
+    id: "meta-llama/Llama-2-7b-chat-hf",
+    name: "Llama 2 7B Chat",
+    provider: "meta",
+    description: "Open source LLM by Meta, great for chat and instruction following",
   },
   {
-    id: "anthropic/claude-sonnet-4.5",
-    name: "Claude Sonnet 4.5",
-    provider: "anthropic",
-    description: "Best balance of speed, intelligence, and cost",
+    id: "meta-llama/Llama-2-13b-chat-hf",
+    name: "Llama 2 13B Chat",
+    provider: "meta",
+    description: "Larger Llama 2 variant with better reasoning",
+  },
+  // Mistral
+  {
+    id: "mistralai/Mistral-7B-Instruct-v0.1",
+    name: "Mistral 7B Instruct",
+    provider: "mistral",
+    description: "Fast and efficient open source model, best balance of speed and quality",
   },
   {
-    id: "anthropic/claude-opus-4.5",
-    name: "Claude Opus 4.5",
-    provider: "anthropic",
-    description: "Most capable Anthropic model",
+    id: "mistralai/Mistral-7B-Instruct-v0.2",
+    name: "Mistral 7B Instruct v0.2",
+    provider: "mistral",
+    description: "Improved version with better instruction following",
   },
-  // OpenAI
+  // Other open source models
   {
-    id: "openai/gpt-4.1-mini",
-    name: "GPT-4.1 Mini",
-    provider: "openai",
-    description: "Fast and cost-effective for simple tasks",
-  },
-  {
-    id: "openai/gpt-5.2",
-    name: "GPT-5.2",
-    provider: "openai",
-    description: "Most capable OpenAI model",
-  },
-  // Google
-  {
-    id: "google/gemini-2.5-flash-preview-05-20",
-    name: "Gemini 2.5 Flash Preview",
-    provider: "google",
-    description: "Ultra fast and affordable",
+    id: "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO",
+    name: "Nous Hermes 2 Mixtral",
+    provider: "open-source",
+    description: "High-quality open source model with strong reasoning",
   },
   {
-    id: "google/gemini-pro",
-    name: "Gemini 1.5 Pro",
-    provider: "google",
-    description: "Legacy model with 32K context",
+    id: "openchat/openchat-3.5",
+    name: "OpenChat 3.5",
+    provider: "open-source",
+    description: "Optimized for conversation and instruction following",
   },
   {
-    id: "google/gemini-3-pro-preview",
-    name: "Gemini 3 Pro",
-    provider: "google",
-    description: "Most capable Google model",
-  },
-  // xAI
-  {
-    id: "xai/grok-4.1-fast-non-reasoning",
-    name: "Grok 4.1 Fast",
-    provider: "xai",
-    description: "Fast with 30K context",
-  },
-  // Reasoning models (extended thinking)
-  {
-    id: "anthropic/claude-3.7-sonnet-thinking",
-    name: "Claude 3.7 Sonnet",
-    provider: "reasoning",
-    description: "Extended thinking for complex problems",
-  },
-  {
-    id: "xai/grok-code-fast-1-thinking",
-    name: "Grok Code Fast",
-    provider: "reasoning",
-    description: "Reasoning optimized for code",
+    id: "HuggingFaceH4/zephyr-7b-beta",
+    name: "Zephyr 7B",
+    provider: "open-source",
+    description: "Aligned for helpfulness and harmlessness",
   },
 ];
 
